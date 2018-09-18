@@ -1284,7 +1284,7 @@ def install_debian_or_ubuntu(args, workspace, run_build_script, mirror):
                "--merged-usr",
                "--variant=minbase",
                "--include=systemd-sysv",
-               "--exclude=sysv-rc,initscripts,startpar,lsb-base,insserv",
+               "--exclude=sysv-rc,initscripts,startpar,insserv",
                "--components=" + components,
                args.release,
                workspace + "/root",
