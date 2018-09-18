@@ -280,10 +280,7 @@ def init_namespace(args):
 
 def setup_workspace(args):
     print_step("Setting up temporary workspace.")
-    if args.output_format in (OutputFormat.directory, OutputFormat.subvolume):
-        d = tempfile.TemporaryDirectory(dir=os.path.dirname(args.output), prefix='.mkosi-')
-    else:
-        d = tempfile.TemporaryDirectory(dir='/var/tmp', prefix='mkosi-')
+    d = tempfile.TemporaryDirectory(dir=os.path.dirname(args.output), prefix='.mkosi-')
 
     print_step("Temporary workspace in " + d.name + " is now set up.")
     return d
