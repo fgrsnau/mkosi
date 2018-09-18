@@ -911,6 +911,11 @@ def run_workspace_command(args, workspace, *cmd, network=False, env={}, nspawn_p
                "--register=no",
                "--bind=" + var_tmp(workspace) + ":/var/tmp" ]
 
+    import platform
+    if 'PATH' not in env and platform.linux_distribution()[0] == 'arch':
+        env = dict(env)
+        env['PATH'] = '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+
     if network:
         # If we're using the host network namespace, use the same resolver
         cmdline += ["--bind-ro=/etc/resolv.conf"]
